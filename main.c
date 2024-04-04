@@ -5,9 +5,19 @@
 * Integrantes:
 * - Arthur Santos Braga             nUSP: 13677156
 * - Karine Cerqueira Nascimento     nUSP: 13718404 
+* - Letícia Crepaldi da Cunha       nUSP: 11800879
 * - Lucas Carvalho Freiberger Stapf nUSP: 11800559
 * - 
-* - 
+*
+* Compilação/Execução
+*
+* - Makefile:
+*   -> Compilar: make all
+*   -> Executar: ./main arg0 arg1 arg2 arg3 arg4 arg5 arg6 arg7
+*
+* - Sem make:
+*   -> Compilar: gcc main.c -pthread -o main
+*   -> Executar: ./main arg0 arg1 arg2 arg3 arg4 arg5 arg6 arg7
 */
 
 #include <stdio.h>
