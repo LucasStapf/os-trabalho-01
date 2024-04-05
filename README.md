@@ -1,4 +1,4 @@
-# OS - Fabrica de Canetas - Trabalho 01
+# OS - Fábrica de Canetas - Trabalho 01
 Repositório destinado ao trabalho 1 de sistemas operacionais.
 
 ## Integrantes
