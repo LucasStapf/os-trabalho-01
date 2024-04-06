@@ -7,7 +7,7 @@
 * - Karine Cerqueira Nascimento     nUSP: 13718404 
 * - Letícia Crepaldi da Cunha       nUSP: 11800879
 * - Lucas Carvalho Freiberger Stapf nUSP: 11800559
-* - 
+* - Viktor Sérgio Ferreira          nUSP: 11800570
 *
 * Compilação/Execução
 *
