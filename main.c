@@ -183,6 +183,7 @@ void *funcao_celula_fabricacao(void *arg) {
 void *funcao_deposito_materia_prima(void *arg) {
   while (TRUE) {
     // Aguarda o Controle liberar o depósito de materia prima e envia a quantidade 
+    // qtde_unidades_envio para a célula de fabricação de canetas cada vez que solicitado ou a quantidade restante disponível
     sem_wait(&sem_materia_prima);
 
     pthread_mutex_lock(&mut_materia_prima);
@@ -198,8 +199,7 @@ void *funcao_deposito_materia_prima(void *arg) {
       qtde_materia_prima_disponivel -= qtde_materia_prima_disponivel;
     }
     pthread_mutex_unlock(&mut_materia_prima);
-    
-    // Espera o tempo especificado entre cada envio de matéria-prima
+
     sleep(tempo_envio_mp);
   }
   return NULL;
@@ -207,7 +207,7 @@ void *funcao_deposito_materia_prima(void *arg) {
 
 // Função do Criador
 void criador() {
-
+  // Cria as threads
   pthread_t deposito_caneta, deposito_mp, celula_fabricacao, controle,
       comprador;
 
@@ -220,6 +220,8 @@ void criador() {
   int canetas_compradas = 0;
   int compra = 0;
 
+  // Enquanto a quantidade de canetas compradas for menor que a quantidade máx de matéria prima, exibe os pedidos realizados e as
+  // quantidades pedidas e recebidas pelo comprador
   while (canetas_compradas < qtde_max_materia_prima) {
 
     sem_wait(&sem_compra_realizada);
@@ -245,7 +247,7 @@ void criador() {
 
 // Rank 0 - Criador
 int main(int argc, char *argv[]) {
-
+  // Recebe os argumentos de entrada
   if (argc == 8) {
     qtde_max_materia_prima = atoi(argv[1]);
     qtde_unidades_envio = atoi(argv[2]);
@@ -276,7 +278,7 @@ int main(int argc, char *argv[]) {
   qtde_materia_prima_disponivel = qtde_max_materia_prima;
 
   printf("Iniciando thread Criador\n");
-  criador(); // Chama a função criador
+  criador();
   printf("Encerrando thread Criador\n");
   return 0;
 }
